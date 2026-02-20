@@ -3,66 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Be gone!</title>
+<title>Alexander The Great – Speech at Opis</title>
+
+<!-- Google Font for elegant typography -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
+
+:root {
+    --gold: #c9b37a;
+    --bg-dark: #0e0e0e;
+    --text-main: #e6d8b5;
+    --divider: #2a2a2a;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-family: Georgia, serif;
-    background-color: #111;
-    color: #e6d8b5;
+    font-family: 'EB Garamond', serif;
+    background: radial-gradient(circle at top, #1a1a1a, #0e0e0e 70%);
+    color: var(--text-main);
     line-height: 1.9;
 }
 
+/* Layout container */
 .container {
-    max-width: 850px;
-    margin: 80px auto;
-    padding: 20px;
+    width: 92%;
+    max-width: 900px;
+    margin: 60px auto 80px auto;
+    padding: 40px 30px;
+    background: rgba(20,20,20,0.6);
+    border: 1px solid #222;
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
 }
 
+/* Title */
 h1 {
+    font-family: 'Cinzel', serif;
     text-align: center;
-    font-size: 2.5em;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    letter-spacing: 1px;
     margin-bottom: 10px;
 }
 
 .subtitle {
     text-align: center;
     font-style: italic;
-    margin-bottom: 30px;
-    color: #c9b37a;
-}
-
-#google_translate_element {
-    text-align: center;
     margin-bottom: 50px;
+    color: var(--gold);
+    font-size: 1rem;
 }
 
+/* Paragraph styling */
 p {
-    margin-bottom: 25px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #444;
+    font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+    margin-bottom: 28px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--divider);
 }
 
+/* Signature */
 .signature {
     margin-top: 60px;
     text-align: right;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 1.2rem;
     border-bottom: none;
+    color: var(--gold);
 }
 
+/* Footer */
 footer {
     text-align: center;
     margin-top: 80px;
-    font-size: 0.9em;
-    color: #888;
+    font-size: 0.9rem;
+    color: #777;
 }
-</style>
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 20px;
+        margin-top: 40px;
+    }
+
+    p {
+        font-size: 1.05rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        padding: 60px 60px;
+    }
+}
+
+</style>
 </head>
 
 <body>
+
 <div class="container">
 
 <h1>Alexander The Great</h1>
@@ -111,5 +156,6 @@ Based on ancient accounts, primarily Arrian’s <i>Anabasis of Alexander</i>.
 </footer>
 
 </div>
+
 </body>
 </html>
