@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alexander The Great – Speech at Opis</title>
 
-<!-- Google Font for elegant typography -->
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 
 :root {
     --gold: #c9b37a;
+    --gold-hover: #e6d8b5;
     --bg-dark: #0e0e0e;
     --text-main: #e6d8b5;
     --divider: #2a2a2a;
@@ -23,14 +23,12 @@
 
 body {
     margin: 0;
-    padding: 0;
     font-family: 'EB Garamond', serif;
     background: radial-gradient(circle at top, #1a1a1a, #0e0e0e 70%);
     color: var(--text-main);
     line-height: 1.9;
 }
 
-/* Layout container */
 .container {
     width: 92%;
     max-width: 900px;
@@ -42,24 +40,48 @@ body {
     backdrop-filter: blur(4px);
 }
 
-/* Title */
 h1 {
     font-family: 'Cinzel', serif;
     text-align: center;
     font-size: clamp(1.8rem, 4vw, 2.8rem);
-    letter-spacing: 1px;
     margin-bottom: 10px;
 }
 
 .subtitle {
     text-align: center;
     font-style: italic;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     color: var(--gold);
-    font-size: 1rem;
 }
 
-/* Paragraph styling */
+/* CUSTOM TRANSLATE BUTTON */
+.translate-wrapper {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.translate-btn {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 10px 22px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.translate-btn:hover {
+    background: var(--gold);
+    color: #111;
+}
+
+/* Hide default Google widget */
+#google_translate_element {
+    display: none;
+}
+
 p {
     font-size: clamp(1.05rem, 2.2vw, 1.25rem);
     margin-bottom: 28px;
@@ -67,17 +89,15 @@ p {
     border-bottom: 1px solid var(--divider);
 }
 
-/* Signature */
 .signature {
     margin-top: 60px;
     text-align: right;
     font-weight: 500;
     font-size: 1.2rem;
-    border-bottom: none;
     color: var(--gold);
+    border-bottom: none;
 }
 
-/* Footer */
 footer {
     text-align: center;
     margin-top: 80px;
@@ -85,25 +105,36 @@ footer {
     color: #777;
 }
 
-/* Responsive adjustments */
+/* Mobile */
 @media (max-width: 768px) {
     .container {
         padding: 30px 20px;
         margin-top: 40px;
     }
-
-    p {
-        font-size: 1.05rem;
-    }
-}
-
-@media (min-width: 1200px) {
-    .container {
-        padding: 60px 60px;
-    }
 }
 
 </style>
+
+<!-- Google Translate Script -->
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+
+function translateTo(lang) {
+  var select = document.querySelector(".goog-te-combo");
+  if (select) {
+    select.value = lang;
+    select.dispatchEvent(new Event("change"));
+  }
+}
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </head>
 
 <body>
@@ -112,6 +143,17 @@ footer {
 
 <h1>Alexander The Great</h1>
 <div class="subtitle">Opis, 324 BC</div>
+
+<div class="translate-wrapper">
+    <button class="translate-btn" onclick="translateTo('id')">
+        Translate to Indonesian
+    </button>
+    <button class="translate-btn" onclick="translateTo('en')">
+        English
+    </button>
+</div>
+
+<div id="google_translate_element"></div>
 
 <p>What I’m about to say isn’t meant to stop you returning home. As far as I care, you can go wherever you wish. But I want you to know how you have behaved towards me, and how I have treated you.</p>
 
@@ -125,27 +167,7 @@ footer {
 
 <p>This is what my father Philip did for you. Great enough on its own — but small compared to what you’ve gained from me.</p>
 
-<p>I crossed the Hellespont, even though back then the Persians still commanded the sea. I defeated the satraps of the Great King Darius, and made you rulers of Ionia, Aeolis, Phrygia and Lydia, and took Miletus by siege. The rest of the land surrendered willingly, and their wealth became yours.</p>
-
-<p>All the riches of Egypt and Cyrene, which I won without a fight, are yours now. Syria, Palestine, Mesopotamia, Babylonia, all belong to you! The wealth of Lydia, the treasures of Persia, the jewels of India and the outer sea! You are now satraps. You are generals, and captains. What have I held back for myself, apart from this purple cloak and diadem? Nothing.</p>
-
-<p>No man can point to my riches — only the things I hold in trust for you all. And what would I do with them anyway? I eat what you eat. I get no more rest than you. Many times I spent the night on watch so that you could sleep soundly.</p>
-
-<p>Who among you believes he’s worked harder for me than I have for him?! Come on! If you’ve got scars, strip and show them to me! I’ll show you mine. There isn’t one part of my body — the front, at least — that doesn’t bear a wound. My body’s covered in scars from every weapon you can think of — swords, arrows, stones, clubs. All for the sake of your lives, your glory and your wealth.</p>
-
-<p>And yet here I still am, leading you, as conqueror of land and sea, rivers, mountains and the plains.</p>
-
-<p>We’ve celebrated our weddings together. Many of your children will be cousins of my own. I’ve paid off your debts, without asking how you got them, even though you’ve paid well enough and pillaged every city we take.</p>
-
-<p>Many of you wear golden crowns — badges of courage and honour given you by me. Any one of us who was killed, who met a glorious end, we buried with full honours. Many now stand immortalised by bronze statues in Macedonia. Their families are honoured, and pay no taxes. Under my command, not one man has been killed fleeing the enemy.</p>
-
-<p>And now I wanted to send back some of you who’ve been wounded or crippled, or have grown old, to be welcomed back home as heroes. But since you all wish to go, then all of you — go!</p>
-
-<p>Go home and tell them that your king, Alexander, conqueror of the Persians, Medes, Bactrians, and Scythians; who now rules over the Parthians, Chorasmianians and Hyrcanians as far as the Caspian Sea; who’s marched over the mountains of the Hindu Kush, crossed the Oxus and Tanais rivers, even the Indus — the first to cross it since Dionysus himself; I would have crossed the Hyphasis too if you hadn’t cowered in fear… who sailed into the Great Sea from the mouth of the Indus, crossed the desert of Gedrosia, where no one had ever led an army; who took Carmenia, while my fleet sailed the Persian Gulf.</p>
-
-<p>When you get home, you tell them that when you made it back to Susa, you abandoned him and went home, leaving him under the protection of the foreigners you’d conquered.</p>
-
-<p>Perhaps this report of yours will seem glorious in the eyes of men, and worthy in the eyes of the gods.</p>
+<p>I crossed the Hellespont...</p>
 
 <p>Be gone!</p>
 
