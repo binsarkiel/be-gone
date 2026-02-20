@@ -1,41 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alexander The Great – Speech at Opis</title>
+<title>Be Gone!</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/i18next@23.4.6/dist/umd/i18next.min.js"></script>
 
 <style>
-
 :root {
     --gold: #c9b37a;
-    --gold-hover: #e6d8b5;
-    --bg-dark: #0e0e0e;
-    --text-main: #e6d8b5;
+    --bg: #0e0e0e;
+    --text: #e6d8b5;
     --divider: #2a2a2a;
 }
 
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
     font-family: 'EB Garamond', serif;
     background: radial-gradient(circle at top, #1a1a1a, #0e0e0e 70%);
-    color: var(--text-main);
+    color: var(--text);
     line-height: 1.9;
 }
 
 .container {
     width: 92%;
     max-width: 900px;
-    margin: 60px auto 80px auto;
+    margin: 60px auto;
     padding: 40px 30px;
     background: rgba(20,20,20,0.6);
-    border: 1px solid #222;
     border-radius: 8px;
     backdrop-filter: blur(4px);
 }
@@ -44,42 +40,53 @@ h1 {
     font-family: 'Cinzel', serif;
     text-align: center;
     font-size: clamp(1.8rem, 4vw, 2.8rem);
-    margin-bottom: 10px;
 }
 
 .subtitle {
     text-align: center;
-    font-style: italic;
-    margin-bottom: 40px;
     color: var(--gold);
+    margin-bottom: 40px;
 }
 
-/* CUSTOM TRANSLATE BUTTON */
-.translate-wrapper {
-    text-align: center;
+/* Toggle */
+.lang-toggle {
+    display: flex;
+    justify-content: center;
     margin-bottom: 50px;
 }
 
-.translate-btn {
-    background: transparent;
-    color: var(--gold);
-    border: 1px solid var(--gold);
-    padding: 10px 22px;
-    font-family: 'Cinzel', serif;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
+.switch {
+    position: relative;
+    width: 120px;
+    height: 40px;
+    background: #222;
+    border-radius: 25px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    transition: background 0.3s;
 }
 
-.translate-btn:hover {
+.slider {
+    position: absolute;
+    width: 50%;
+    height: 30px;
     background: var(--gold);
-    color: #111;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
 }
 
-/* Hide default Google widget */
-#google_translate_element {
-    display: none;
+.label {
+    width: 50%;
+    text-align: center;
+    z-index: 2;
+    font-size: 0.8rem;
+    font-family: 'Cinzel', serif;
+}
+
+.switch.active .slider {
+    transform: translateX(100%);
 }
 
 p {
@@ -87,14 +94,13 @@ p {
     margin-bottom: 28px;
     padding-bottom: 22px;
     border-bottom: 1px solid var(--divider);
+    transition: opacity 0.2s ease;
 }
 
 .signature {
-    margin-top: 60px;
     text-align: right;
-    font-weight: 500;
-    font-size: 1.2rem;
     color: var(--gold);
+    margin-top: 60px;
     border-bottom: none;
 }
 
@@ -105,79 +111,122 @@ footer {
     color: #777;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-    .container {
-        padding: 30px 20px;
-        margin-top: 40px;
-    }
+@media (max-width:768px){
+    .container { padding: 20px; }
 }
-
 </style>
-
-<!-- Google Translate Script -->
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'en',
-    autoDisplay: false
-  }, 'google_translate_element');
-}
-
-function translateTo(lang) {
-  var select = document.querySelector(".goog-te-combo");
-  if (select) {
-    select.value = lang;
-    select.dispatchEvent(new Event("change"));
-  }
-}
-</script>
-
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
 </head>
-
 <body>
 
 <div class="container">
 
-<h1>Alexander The Great</h1>
-<div class="subtitle">Opis, 324 BC</div>
+<h1 data-i18n="title"></h1>
+<div class="subtitle" data-i18n="subtitle"></div>
 
-<div class="translate-wrapper">
-    <button class="translate-btn" onclick="translateTo('id')">
-        Translate to Indonesian
-    </button>
-    <button class="translate-btn" onclick="translateTo('en')">
-        English
-    </button>
+<div class="lang-toggle">
+    <div class="switch" id="langSwitch">
+        <div class="slider"></div>
+        <div class="label">ID</div>
+        <div class="label">EN</div>
+    </div>
 </div>
 
-<div id="google_translate_element"></div>
+<p data-i18n="p1"></p>
+<p data-i18n="p2"></p>
+<p data-i18n="p3"></p>
+<p data-i18n="p4"></p>
+<p data-i18n="p5"></p>
+<p data-i18n="p6"></p>
+<p data-i18n="p7"></p>
+<p data-i18n="p8"></p>
+<p data-i18n="p9"></p>
+<p data-i18n="p10"></p>
+<p data-i18n="p11"></p>
+<p data-i18n="p12"></p>
+<p data-i18n="p13"></p>
+<p data-i18n="p14"></p>
+<p data-i18n="p15"></p>
+<p data-i18n="p16"></p>
+<p data-i18n="p17"></p>
+<p data-i18n="p18"></p>
 
-<p>What I’m about to say isn’t meant to stop you returning home. As far as I care, you can go wherever you wish. But I want you to know how you have behaved towards me, and how I have treated you.</p>
-
-<p>I’ll begin, as is right, with my father, Philip.</p>
-
-<p>When he found you, you were mere peasants, wearing hides, tending a few sheep on the mountain slopes, and you could barely defend them from your neighbours. Under him, you began living in cities, with good laws and customs. And he turned you from slaves into rulers over those very barbarians who used to plunder your land.</p>
-
-<p>He conquered most of Thrace, taking the best harbours so there was trade and prosperity, and put the mines to steady work. The Thessalians — they used to terrify you! Well, we rule them now! The Athenians and Thebans, always looking for a chance to attack Macedonia, were so humbled that they no longer take tribute from Macedonia, but instead depend on us for their protection.</p>
-
-<p>My father went to the Peloponnese and put their house in order. Then he was declared supreme commander of all the Greeks for the campaign against the Persians — an honour not just for himself, but for all Macedonians.</p>
-
-<p>This is what my father Philip did for you. Great enough on its own — but small compared to what you’ve gained from me.</p>
-
-<p>I crossed the Hellespont...</p>
-
-<p>Be gone!</p>
-
-<div class="signature">— Alexander The Great</div>
+<div class="signature" data-i18n="signature"></div>
 
 <footer>
-Based on ancient accounts, primarily Arrian’s <i>Anabasis of Alexander</i>.
+Berdasarkan catatan kuno, terutama Arrian <i>Anabasis of Alexander</i>.
 </footer>
 
 </div>
 
+<script>
+i18next.init({
+    lng: "id",
+    resources: {
+        id: { translation: {
+            title: "Alexander Agung",
+            subtitle: "Opis, 324 SM",
+            p1: "Apa yang akan saya katakan bukan untuk menghentikan kalian pulang. Sepengetahuan saya, kalian bisa pergi ke mana saja yang kalian inginkan. Tapi saya ingin kalian tahu bagaimana kalian telah bersikap terhadap saya, dan bagaimana saya telah memperlakukan kalian.",
+            p2: "Saya akan mulai, sebagaimana seharusnya, dengan ayah saya, Philip.",
+            p3: "Ketika ia menemukan kalian, kalian hanyalah petani sederhana, mengenakan kulit binatang, merawat beberapa domba di lereng gunung, dan hampir tidak bisa mempertahankan mereka dari tetangga. Di bawah bimbingannya, kalian mulai hidup di kota, dengan hukum dan adat yang baik. Dan ia mengubah kalian dari budak menjadi penguasa atas orang-orang barbar yang dulu menjarah tanah kalian.",
+            p4: "Ia menaklukkan sebagian besar Thrace, mengambil pelabuhan terbaik sehingga perdagangan dan kemakmuran terjadi, serta mengatur tambang agar berjalan lancar.",
+            p5: "Orang Thessalia — mereka dulu menakut-nakuti kalian! Sekarang kita menguasai mereka! Orang Athena dan Thebes, yang selalu mencari kesempatan menyerang Makedonia, begitu direndahkan — dengan saya berperan besar dalam perang — sehingga mereka tidak lagi menarik upeti dari Makedonia, melainkan bergantung pada perlindungan kita.",
+            p6: "Ayah saya pergi ke Peloponnese dan menertibkan rumah mereka. Lalu ia dinyatakan sebagai komandan tertinggi semua orang Yunani untuk kampanye melawan Persia — sebuah kehormatan bukan hanya bagi dirinya, tetapi untuk semua orang Makedonia.",
+            p7: "Inilah yang telah dilakukan ayah saya, Philip, untuk kalian. Hebat sekali, tapi kecil dibandingkan dengan apa yang kalian peroleh dari saya.",
+            p8: "Saya menyeberangi Hellespont, meskipun saat itu Persia masih menguasai laut. Saya mengalahkan satrap Raja Agung Darius, dan menjadikan kalian penguasa Ionia, Aeolis, Phrygia dan Lydia, serta menaklukkan Miletus dengan pengepungan. Sisanya menyerah dengan sukarela, dan kekayaan mereka menjadi milik kalian.",
+            p9: "Semua kekayaan Mesir dan Kirene yang saya menangkan tanpa pertempuran kini milik kalian. Suriah, Palestina, Mesopotamia, Babilonia, semua menjadi milik kalian! Kekayaan Lydia, harta Persia, permata India dan laut luar! Kalian sekarang satrap, jenderal, dan kapten. Apa yang saya simpan untuk diri sendiri, selain jubah ungu dan diadem ini? Tidak ada.",
+            p10: "Tak seorang pun dapat menunjuk kekayaan saya — hanya hal-hal yang saya simpan untuk kalian semua. Dan apa gunanya bagi saya? Saya makan apa yang kalian makan. Saya tidak mendapat lebih banyak istirahat daripada kalian. Berkali-kali saya berjaga di malam hari agar kalian bisa tidur dengan nyenyak.",
+            p11: "Siapa di antara kalian yang percaya telah bekerja lebih keras untuk saya daripada yang saya lakukan untuk kalian?! Ayo! Jika kalian memiliki bekas luka, buka dan tunjukkan kepada saya! Saya akan menunjukkan milik saya. Tidak ada satu bagian pun dari tubuh saya — setidaknya bagian depan — yang tidak memiliki luka. Tubuh saya penuh luka dari setiap senjata yang kalian bisa bayangkan — pedang, panah, batu, tongkat. Semua demi kehidupan kalian, kejayaan dan kekayaan kalian.",
+            p12: "Dan meskipun begitu, saya masih di sini, memimpin kalian, sebagai penakluk daratan dan laut, sungai, gunung, dan dataran.",
+            p13: "Kita telah merayakan pernikahan bersama. Banyak anak kalian akan menjadi sepupu saya sendiri. Saya telah melunasi utang kalian, tanpa menanyakan bagaimana kalian mendapatkannya, meskipun kalian membayar dengan baik dan menjarah setiap kota yang kami taklukkan.",
+            p14: "Banyak dari kalian mengenakan mahkota emas — tanda keberanian dan kehormatan yang diberikan oleh saya. Siapapun yang tewas, yang mencapai akhir yang mulia, kami makamkan dengan penuh kehormatan. Banyak sekarang dipahat dalam patung perunggu di Makedonia. Keluarga mereka dihormati, dan tidak membayar pajak. Di bawah komando saya, tidak seorang pun tewas melarikan diri dari musuh.",
+            p15: "Dan sekarang saya ingin memulangkan sebagian dari kalian yang terluka atau pincang, atau yang sudah tua, untuk disambut sebagai pahlawan di rumah. Tapi karena kalian semua ingin pergi, maka pergilah!",
+            p16: "Pulanglah dan katakan bahwa rajamu, Alexander, penakluk Persia, Media, Bactria, dan Scythia; yang kini menguasai Parthia, Chorasmia, dan Hyrcania sejauh Laut Kaspia; yang telah menyeberangi gunung Hindu Kush, melewati sungai Oxus dan Tanais, bahkan Indus — pertama sejak Dionysus sendiri; saya akan menyeberangi Hyphasis jika kalian tidak cowering karena takut… yang berlayar ke Laut Besar dari muara Indus, menyeberangi gurun Gedrosia, di mana belum pernah ada yang memimpin pasukan; yang menaklukkan Carmenia, sementara armada saya berlayar di Teluk Persia.",
+            p17: "Ketika kalian tiba di rumah, katakan bahwa ketika kalian kembali ke Susa, kalian meninggalkannya dan pulang, meninggalkannya di bawah perlindungan orang-orang yang telah kalian taklukkan.",
+            p18: "Mungkin laporan ini akan terlihat mulia di mata manusia, dan layak di mata para dewa.",
+            signature: "— Alexander Agung"
+        }},
+        en: { translation: {
+            title: "Alexander The Great",
+            subtitle: "Opis, 324 BC",
+            p1: "What I’m about to say isn’t meant to stop you returning home. As far as I care, you can go wherever you wish. But I want you to know how you have behaved towards me, and how I have treated you.",
+            p2: "I’ll begin, as is right, with my father, Philip.",
+            p3: "When he found you, you were mere peasants, wearing hides, tending a few sheep on the mountain slopes, and you could barely defend them from your neighbours. Under him, you began living in cities, with good laws and customs. And he turned you from slaves into rulers over those very barbarians who used to plunder your land.",
+            p4: "He conquered most of Thrace, taking the best harbours so there was trade and prosperity, and put the mines to steady work.",
+            p5: "The Thessalians — they used to terrify you! Well, we rule them now! The Athenians and Thebans, always looking for a chance to attack Macedonia, were so humbled — myself playing no small part in the war — that they no longer take tribute from Macedonia, but instead depend on us for their protection.",
+            p6: "My father went to the Peloponnese and put their house in order. Then he was declared supreme commander of all the Greeks for the campaign against the Persians — an honour not just for himself, but for all Macedonians.",
+            p7: "This is what my father Philip did for you. Great enough on its own — but small compared to what you’ve gained from me.",
+            p8: "I crossed the Hellespont, even though back then the Persians still commanded the sea. I defeated the satraps of the Great King Darius, and made you rulers of Ionia, Aeolis, Phrygia and Lydia, and took Miletus by siege. The rest of the land surrendered willingly, and their wealth became yours.",
+            p9: "All the riches of Egypt and Cyrene, which I won without a fight, are yours now. Syria, Palestine, Mesopotamia, Babylonia, all belong to you! The wealth of Lydia, the treasures of Persia, the jewels of India and the outer sea! You are now satraps. You are generals, and captains. What have I held back for myself, apart from this purple cloak and diadem? Nothing.",
+            p10: "No man can point to my riches — only the things I hold in trust for you all. And what would I do with them anyway? I eat what you eat. I get no more rest than you. Many times I spent the night on watch so that you could sleep soundly.",
+            p11: "Who among you believes he’s worked harder for me than I have for him?! Come on! If you’ve got scars, strip and show them to me! I’ll show you mine. There isn’t one part of my body — the front, at least — that doesn’t bear a wound. My body’s covered in scars from every weapon you can think of — swords, arrows, stones, clubs. All for the sake of your lives, your glory and your wealth.",
+            p12: "And yet here I still am, leading you, as conqueror of land and sea, rivers, mountains and the plains.",
+            p13: "We’ve celebrated our weddings together. Many of your children will be cousins of my own. I’ve paid off your debts, without asking how you got them, even though you’ve paid well enough and pillaged every city we take.",
+            p14: "Many of you wear golden crowns — badges of courage and honour given you by me. Any one of us who was killed, who met a glorious end, we buried with full honours. Many now stand immortalised by bronze statues in Macedonia. Their families are honoured, and pay no taxes. Under my command, not one man has been killed fleeing the enemy.",
+            p15: "And now I wanted to send back some of you who’ve been wounded or crippled, or have grown old, to be welcomed back home as heroes. But since you all wish to go, then all of you — go!",
+            p16: "Go home and tell them that your king, Alexander, conqueror of the Persians, Medes, Bactrians, and Scythians; who now rules over the Parthians, Chorasmianians and Hyrcanians as far as the Caspian Sea; who’s marched over the mountains of the Hindu Kush, crossed the Oxus and Tanais rivers, even the Indus — the first to cross it since Dionysus himself; I would have crossed the Hyphasis too if you hadn’t cowered in fear… who sailed into the Great Sea from the mouth of the Indus, crossed the desert of Gedrosia, where no one had ever led an army; who took Carmenia, while my fleet sailed the Persian Gulf.",
+            p17: "When you get home, you tell them that when you made it back to Susa, you abandoned him and went home, leaving him under the protection of the foreigners you’d conquered.",
+            p18: "Perhaps this report of yours will seem glorious in the eyes of men, and worthy in the eyes of the gods.",
+            signature: "— Alexander The Great"
+        }}
+    }
+}, function() {
+    updateContent();
+});
+
+function updateContent() {
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+        el.innerHTML = i18next.t(el.getAttribute("data-i18n"));
+    });
+}
+
+const switchBtn = document.getElementById("langSwitch");
+
+switchBtn.addEventListener("click", () => {
+    const newLang = i18next.language === "id" ? "en" : "id";
+    i18next.changeLanguage(newLang, updateContent);
+    switchBtn.classList.toggle("active");
+});
+
+</script>
 </body>
 </html>
